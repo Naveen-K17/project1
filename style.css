@@ -1,3 +1,65 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body{
-    background-color: blue;
+    /* background-color: blue; */
+}
+
+.container{
+    background-color: #001962; 
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    position: sticky;
+    top:0px;
+}
+
+.box{
+    max-width: 80vw;
+    margin: auto;
+}
+
+.box ul li button{
+    box-sizing: border-box;
+    width: 5vw;
+    height: 4vh;
+    border-radius: 15px;
+}
+.box ul li a{
+    list-style: none;
+    text-decoration: none;
+    color: black;
+}
+
+.box ul {
+    display: flex;
+    gap: 5vw
+}
+
+.img img{
+    object-fit: contain;
+    width: 100vw;
+}
+
+.logo{
+    max-width: 100vw;
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    width: 60px;
+    height: 60px;
+    background-color: #c69e66;
+    border-radius: 50px;
+    margin: 2px solid rgb(68, 198, 68);
+}
+
+.box ul button:hover{
+    background-color: #c69e66;
+}
+
+.box ul li button a:hover{
+    color: #001962;
 }
