@@ -6,7 +6,7 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
   let message = document.getElementById("message");
 
   // Dummy credentials (replace with backend authentication later)
-  const validUser = "admin";
+  const validUser = "naveen";
   const validPass = "12345";
 
   if (username === validUser && password === validPass) {

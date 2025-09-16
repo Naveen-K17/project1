@@ -51,7 +51,7 @@ body {
   transition: 0.3s;
 }
 
-.input-group input:focus {
+.input-group input:focus{
   border-color: #7cf03d;
   box-shadow: 0 0 5px rgba(124, 240, 61, 0.5);
 }
