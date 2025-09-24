@@ -11,7 +11,70 @@ body {
   height: 100vh;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #1f242d, #7cf03d);
+  background: linear-gradient(135deg, white , #0d2b66);
+}
+
+/* Header */
+.log{
+  background: #7cf03d;
+  color: #000;
+}
+
+
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #0d2b66;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px;
+  z-index: 1000;
+}
+
+.logo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo img {
+  height: 80px;
+  margin-right: 10px;
+}
+
+/* Navigation */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  background: #fff;
+  color: #0d2b66;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+nav ul li a:hover {
+  background: #7cf03d;
+  color: #000;
+}
+
+/* Mobile Menu */
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
 }
 
 /* Container */
@@ -81,3 +144,4 @@ button:hover {
   font-size: 14px;
   color: red;
 }
+

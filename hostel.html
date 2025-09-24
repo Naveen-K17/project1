@@ -3,88 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Login - Sapthagiri NPS University</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- <link rel="stylesheet" href="login.css"> -->
+    <title>Hostel Application Portal</title>
+    <meta name="description" content="Student hostel application portal for university accommodation booking and priority selection">
+    <link rel="stylesheet" href="hostel.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.462.0/lucide.min.css" rel="stylesheet">
+    <style>
+    .logo img{
+      border-radius: 20px;
+      box-shadow: 0px 0px 10px 8px #0d2b66;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="images/snpsu logo.png" alt="University Logo">
-        </div>
-        <nav>
-            <ul id="navLinks">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="hostel.html">Hostel</a></li>
-                <li><a href="#">PG</a></li>
-                <li><a href="#">Events</a></li>
-                <li><a href="login.html" class="active">Login</a></li>
-            </ul>
-            <div class="menu-toggle" id="menuToggle">&#9776;</div>
-        </nav>
-    </header>
+    <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="images/loho blue.png" alt="University Logo">
+    </div>
 
-    <main class="login-container">
+    <!-- Navigation -->
+    <nav>
+      <ul id="navLinks">
+        <li><a href="index.html" >Home</a></li>
+        <li><a href="hostel.html" class="hostel">Hostel</a></li>
+        <li><a href="notes.html">Notes</a></li>
+        <li><a href="#">Events</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+      <!-- Mobile Menu Button -->
+      <div class="menu-toggle" id="menuToggle">&#9776;</div>
+    </nav>
+  </header>
+
+    <!-- Login Form -->
+    <div id="loginForm" class="login-container">
         <div class="login-card">
-            <h2>Student Login</h2>
-            <form id="student-details-form">
+            <div class="login-header">
+                <div class="logo-container">
+                    <svg class="graduation-cap" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                        <path d="m6 12 5 5 5-5"/>
+                    </svg>
+                </div>
+                <h1>Hostel Application Portal</h1>
+                <p>Enter your details to apply for hostel accommodation</p>
+            </div>
+            <form class="login-form" onsubmit="handleLogin(event)">
                 <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" required>
+                    <label for="studentName">Full Name</label>
+                    <input type="text" id="studentName" placeholder="Enter your full name" required>
                 </div>
                 <div class="form-group">
-                    <label for="srn">SRN (Student Registration Number)</label>
-                    <input type="text" id="srn" name="srn" required>
+                    <label for="srn">Student Registration Number (SRN)</label>
+                    <input type="text" id="srn" placeholder="Enter your SRN" required>
                 </div>
-                <div class="form-group">
-                    <label for="branch">Branch</label>
-                    <input type="text" id="branch" name="branch" required>
-                </div>
-                <button type="submit" id="next-button">Next</button>
+                <button type="submit" class="submit-btn">Continue to Hostel Selection</button>
             </form>
         </div>
-    </main>
+    </div>
 
-    <footer>
-        <div class="footer-container">
-            <div class="footer-section">
-                <h3>About Us</h3>
-                <p>Sapthagiri NPS University is committed to academic excellence and holistic student development.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="hostel.html">Hostel</a></li>
-                    <li><a href="#">PG</a></li>
-                    <li><a href="#">Events</a></li>
-                    <li><a href="login.html">Login</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p>Sapthagiri NPS University<br>
-                Bangalore, Karnataka, India</p>
-                <p>Email: info@snpsu.edu.in</p>
-                <p>Phone: +91 98765 43210</p>
-            </div>
-            <div class="footer-section">
-                <h3>Follow Us</h3>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                </div>
+    <!-- Hostel Selection -->
+    <div id="hostelSelection" class="hostel-container" style="display: none;">
+        <div class="hostel-header">
+            <h1>Select Your Hostel Preferences</h1>
+            <div class="student-info">
+                <span id="studentDisplay"></span>
+                <button onclick="handleLogout()" class="logout-btn">Logout</button>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>© 2025 Sapthagiri NPS University | All Rights Reserved</p>
+        
+        <div class="hostel-content">
+            <div class="instructions">
+                <h2>Arrange hostels by priority</h2>
+                <p>Use the arrows to reorder hostels according to your preference. Your top choice should be at the top.</p>
+            </div>
+            
+            <div class="hostel-list" id="hostelList">
+                <!-- Hostel items will be populated by JavaScript -->
+            </div>
+            
+            <button onclick="submitApplication()" class="submit-application-btn">Submit Application</button>
         </div>
-    </footer>
+    </div>
 
-    <script src="script.js"></script>
-    <script src="login.js"></script>
+    <!-- Success Modal -->
+    <div id="successModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h2>Application Submitted Successfully!</h2>
+            <p>Your hostel application has been submitted with the following preferences:</p>
+            <ol id="finalPreferences"></ol>
+            <button onclick="closeModal()" class="modal-btn">Close</button>
+        </div>
+    </div>
+
+     <!-- Footer -->
+<footer>
+  <div class="footer-container">
+    <!-- About -->
+    <div class="footer-section">
+      <h3>About Us</h3>
+      <p>Evergreen University is committed to academic excellence and holistic student development.</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="hostel.html">Hostel</a></li>
+        <li><a href="#">PG</a></li>
+        <li><a href="#">Events</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div class="footer-section">
+      <h3>Contact Us</h3>
+      <p>Evergreen University<br>
+         Belagavi, Karnataka, India</p>
+      <p>Email: info@eu.edu.in</p>
+      <p>Phone: +91 98765 43210</p>
+    </div>
+
+    <!-- Social -->
+    <div class="footer-section">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 Evergreen University | All Rights Reserved</p>
+  </div>
+</footer>
+
     <script src="hostel.js"></script>
 </body>
 </html>
